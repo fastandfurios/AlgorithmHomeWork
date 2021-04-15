@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lesson1
+namespace Lesson1.DirWithTask2
 {
     public class Task2
     {

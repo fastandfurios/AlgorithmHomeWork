@@ -14,5 +14,6 @@ namespace Lesson2.DirWithTask1
 	    void RemoveNode(int index);
 	    void RemoveNode(Node node);
 	    Node FindNode(int searchValue);
+	    Node GetByIndex(int index);
     }
 }

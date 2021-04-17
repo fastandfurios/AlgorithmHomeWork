@@ -8,14 +8,27 @@ namespace Lesson2.DirWithTask1
 {
     public class LinkedList : ILinkedList
     {
-	    public int GetCount()
-	    {
-		    throw new NotImplementedException();
-	    }
+	    private Node _startNode;
+	    private Node _endNode;
+	    private int _count;
+
+	    public int GetCount() => _count;
 
 	    public void AddNode(int value)
 	    {
-		    throw new NotImplementedException();
+		    var node = new Node();
+		    node.Value = value;
+
+		    if (_startNode == null)
+			    _startNode = node;
+		    else
+		    {
+			    _endNode.NextNode = node;
+			    node.PrevNode = _endNode;
+		    }
+
+		    _endNode = node;
+		    _count++;
 	    }
 
 	    public void AddNodeAfter(Node node, int value)
@@ -34,6 +47,11 @@ namespace Lesson2.DirWithTask1
 	    }
 
 	    public Node FindNode(int searchValue)
+	    {
+		    throw new NotImplementedException();
+	    }
+
+	    public Node GetByIndex(int index)
 	    {
 		    throw new NotImplementedException();
 	    }

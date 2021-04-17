@@ -10,21 +10,34 @@ namespace Lesson1.DirWithTask3
     {
 	    private readonly List<int> _list = new List<int>();
 
-	    public void CalculateNumberFibonacciRecursion(int n, int i, int sum)
+	    public int CalculateNumberFibonacciRecursion(int n, int i)
 	    {
-		    if (sum == 0 || sum == 1)
+		    if (i <= n)
 		    {
-				_list.Add(sum);
-				sum = ++i;
-				CalculateNumberFibonacciRecursion(n, i, sum);
+			    if (i == 0 || i == 1)
+				    _list.Add(i);
+			    else
+				    _list.Add(_list[i - 2] + _list[i - 1]);
+				
+				CalculateNumberFibonacciRecursion(n, ++i);
 		    }
 
-		    if (i < n)
+		    return _list[_list.Count - 1];
+	    }
+
+	    public int CalculateNumberFibonacciLoop(int n)
+	    {
+		    _list.RemoveRange(0, _list.Count);
+
+		    for (int i = 0; i <= n; i++)
 		    {
-			    sum = (sum - 2) + (sum - 1);
-				_list.Add(sum);
-				CalculateNumberFibonacciRecursion(n, ++i, sum);
-		    }
+				if (i == 0 || i == 1)
+					_list.Add(i);
+				else
+					_list.Add(_list[i - 2] + _list[i - 1]);
+			}
+
+			return _list[_list.Count - 1];
 	    }
     }
 }

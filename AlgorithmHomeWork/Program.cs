@@ -13,6 +13,8 @@ namespace Lesson2
 			linkedList.AddNode(6);
 			linkedList.AddNode(10);
 
+			linkedList.AddNodeAfter(new Node(), 6);
+
 			var node = linkedList.FindNode(10);
 
 			int result = linkedList.GetByIndex(1).Value;

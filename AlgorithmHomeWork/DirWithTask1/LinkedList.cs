@@ -33,9 +33,21 @@ namespace Lesson2.DirWithTask1
 
 	    public void AddNodeAfter(Node node, int value)
 	    {
-		    node.Value = value;
+		    var vertex = _startNode;
 
-
+		    while (vertex != null)
+		    {
+			    if (vertex.Value == value)
+			    {
+				    node.NextNode = vertex.NextNode;
+				    node.PrevNode = vertex;
+				    vertex.NextNode = node;
+				    node.Value = 8;
+					break;
+			    }
+			    else
+				    vertex = vertex.NextNode;
+		    }
 
 		    _count++;
 	    }
@@ -51,18 +63,21 @@ namespace Lesson2.DirWithTask1
 				{
 					node = node.NextNode;
 					node.PrevNode = null;
+					_count--;
 				}
 				else if (index == _count - 1)
 				{
 					node = _endNode;
 					node = node.PrevNode;
 					node.NextNode = null;
+					_count--;
 				}
 				else if (indexLinkedList == index)
 				{
 					node = node.NextNode;
 					node = node.PrevNode;
 					node.Value = node.NextNode.Value;
+					_count--;
 					break;
 				}
 				else

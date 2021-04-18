@@ -1,6 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Lesson1.DirWithTask1;
-using System;
 
 namespace Lesson1Tests
 {

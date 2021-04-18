@@ -6,7 +6,7 @@ namespace Lesson1Tests
     [TestClass]
     public class Task2Tests
     {
-	    private readonly Task3 _task = new Task3();
+	    private readonly NumbersFibonacci _task = new NumbersFibonacci();
 
 	    [TestMethod]
 	    public void CalculateNumberFibonacciRecursion_10_0_34_returned()

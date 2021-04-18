@@ -13,7 +13,7 @@ namespace Lesson1
 			Console.WriteLine(task1.CheckNumber(10));
 
 			//Задача 3
-			var task3 = new Task3();
+			var task3 = new NumbersFibonacci();
 			Console.WriteLine(task3.CalculateNumberFibonacciRecursion(5, 0));
 			Console.WriteLine(task3.CalculateNumberFibonacciLoop(10));
 		}

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lesson1.DirWithTask3
 {
-    public class Task3
+    public class NumbersFibonacci
     {
 	    private readonly List<int> _list = new List<int>();
 

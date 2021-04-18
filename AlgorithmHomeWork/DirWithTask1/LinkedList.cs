@@ -33,13 +33,45 @@ namespace Lesson2.DirWithTask1
 
 	    public void AddNodeAfter(Node node, int value)
 	    {
-		    throw new NotImplementedException();
+		    node.Value = value;
+
+
+
+		    _count++;
 	    }
 
 	    public void RemoveNode(int index)
 	    {
-		    throw new NotImplementedException();
-	    }
+			int indexLinkedList = 0;
+			var node = _startNode;
+
+			while (node != null)
+			{
+				if (index == 0)
+				{
+					node = node.NextNode;
+					node.PrevNode = null;
+				}
+				else if (index == _count - 1)
+				{
+					node = _endNode;
+					node = node.PrevNode;
+					node.NextNode = null;
+				}
+				else if (indexLinkedList == index)
+				{
+					node = node.NextNode;
+					node = node.PrevNode;
+					node.Value = node.NextNode.Value;
+					break;
+				}
+				else
+				{
+					node = node.NextNode;
+					indexLinkedList++;
+				}
+			}
+		}
 
 	    public void RemoveNode(Node node)
 	    {
@@ -48,12 +80,36 @@ namespace Lesson2.DirWithTask1
 
 	    public Node FindNode(int searchValue)
 	    {
-		    return new Node();
+		    var node = _startNode;
+
+		    while (node != null)
+		    {
+			    if (node.Value == searchValue)
+				    break;
+			    else
+				    node = node.NextNode;
+		    }
+
+		    return node;
 	    }
 
 	    public Node GetByIndex(int index)
 	    {
-		    throw new NotImplementedException();
-	    }
+		    int indexLinkedList = 0;
+		    var node = _startNode;
+
+			while (node != null)
+			{
+				if (indexLinkedList == index)
+					break;
+				else
+				{
+					node = node.NextNode;
+					indexLinkedList++;
+				}
+			}
+
+			return node;
+		}
     }
 }

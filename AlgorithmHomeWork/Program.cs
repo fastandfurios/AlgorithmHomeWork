@@ -8,7 +8,18 @@ namespace Lesson2
 	{
 		static void Main(string[] args)
 		{
-			
+			var linkedList = new LinkedList();
+			linkedList.AddNode(5);
+			linkedList.AddNode(6);
+			linkedList.AddNode(10);
+
+			var node = linkedList.FindNode(10);
+
+			int result = linkedList.GetByIndex(1).Value;
+
+			linkedList.RemoveNode(2);
+
+			Console.WriteLine(linkedList.GetCount());
 			
 			//Задача 2
 			var binarySearch = new BinarySearch();

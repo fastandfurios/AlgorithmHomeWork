@@ -1,4 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+п»їusing Microsoft.VisualStudio.TestTools.UnitTesting;
 using Lesson1.DirWithTask1;
 
 namespace Lesson1Tests
@@ -13,7 +13,7 @@ namespace Lesson1Tests
 		public void CheckNumber_10_not_simple_returned()
 		{
 			int number = 10;
-			string expected = "Не простое";
+			string expected = "РќРµ РїСЂРѕСЃС‚РѕРµ";
 
 			string actual = _task.CheckNumber(number);
 
@@ -24,7 +24,7 @@ namespace Lesson1Tests
 		public void CheckNumber_5_simple_returned()
 		{
 			int number = 5;
-			string expected = "Простое";
+			string expected = "РџСЂРѕСЃС‚РѕРµ";
 
 			string actual = _task.CheckNumber(number);
 

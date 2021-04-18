@@ -11,7 +11,7 @@ namespace Lesson2.DirWithTask1
 	    private Node _startNode;
 	    private Node _endNode;
 	    private int _count;
-
+		
 	    public int GetCount() => _count;
 
 	    public void AddNode(int value)
@@ -48,7 +48,7 @@ namespace Lesson2.DirWithTask1
 
 	    public Node FindNode(int searchValue)
 	    {
-		    throw new NotImplementedException();
+		    return new Node();
 	    }
 
 	    public Node GetByIndex(int index)

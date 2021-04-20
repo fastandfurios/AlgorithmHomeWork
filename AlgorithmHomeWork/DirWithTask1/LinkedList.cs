@@ -63,7 +63,9 @@ namespace Lesson2.DirWithTask1
 				{
 					node = node.NextNode;
 					node.PrevNode = null;
+					_startNode = node;
 					_count--;
+					break;
 				}
 				else if (index == _count - 1)
 				{
@@ -71,12 +73,12 @@ namespace Lesson2.DirWithTask1
 					node = node.PrevNode;
 					node.NextNode = null;
 					_count--;
+					break;
 				}
 				else if (indexLinkedList == index)
 				{
-					node = node.NextNode;
-					node = node.PrevNode;
-					node.Value = node.NextNode.Value;
+					node.PrevNode.NextNode = node.NextNode;
+					node.NextNode.PrevNode = node.PrevNode;
 					_count--;
 					break;
 				}
@@ -90,7 +92,36 @@ namespace Lesson2.DirWithTask1
 
 	    public void RemoveNode(Node node)
 	    {
-		    throw new NotImplementedException();
+		    var vertex = _startNode;
+		    node.Value = 10;
+
+		    while (vertex != null)
+		    {
+			    if (vertex.Value == node.Value)
+			    {
+				    if (vertex.PrevNode == null)
+				    {
+					    vertex = vertex.NextNode;
+					    vertex.PrevNode = null;
+					    _startNode = vertex;
+						break;
+					}
+					else if (vertex.NextNode == null)
+				    {
+					    vertex = vertex.PrevNode;
+						vertex.NextNode = null;
+						break;
+					}
+				    else
+				    {
+						vertex.PrevNode.NextNode = vertex.NextNode;
+						vertex.NextNode.PrevNode = vertex.PrevNode;
+						break;
+					}
+			    }
+			    else
+				    vertex = vertex.NextNode;
+		    }
 	    }
 
 	    public Node FindNode(int searchValue)

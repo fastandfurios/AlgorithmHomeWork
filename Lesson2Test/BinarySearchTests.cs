@@ -4,7 +4,7 @@ using Lesson2.DirWithTask2;
 namespace Lesson2Tests
 {
 	[TestClass]
-	public class Task2Tests
+	public class BinarySearchTests
 	{
 		private readonly BinarySearch _binarySearch = new BinarySearch();
 

@@ -42,7 +42,6 @@ namespace Lesson2.DirWithTask1
 				    node.NextNode = vertex.NextNode;
 				    node.PrevNode = vertex;
 				    vertex.NextNode = node;
-				    node.Value = 8;
 					break;
 			    }
 			    else
@@ -93,7 +92,6 @@ namespace Lesson2.DirWithTask1
 	    public void RemoveNode(Node node)
 	    {
 		    var vertex = _startNode;
-		    node.Value = 10;
 
 		    while (vertex != null)
 		    {
@@ -104,18 +102,21 @@ namespace Lesson2.DirWithTask1
 					    vertex = vertex.NextNode;
 					    vertex.PrevNode = null;
 					    _startNode = vertex;
+					    _count--;
 						break;
 					}
 					else if (vertex.NextNode == null)
 				    {
 					    vertex = vertex.PrevNode;
 						vertex.NextNode = null;
+						_count--;
 						break;
 					}
 				    else
 				    {
 						vertex.PrevNode.NextNode = vertex.NextNode;
 						vertex.NextNode.PrevNode = vertex.PrevNode;
+						_count--;
 						break;
 					}
 			    }

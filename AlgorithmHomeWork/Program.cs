@@ -17,15 +17,15 @@ namespace Lesson2
 			linkedList.AddNode(85);
 			linkedList.AddNode(10);
 
-			linkedList.AddNodeAfter(new Node(), 6);
+			linkedList.AddNodeAfter(new Node(){ Value = 8 }, 6);
 
 			linkedList.FindNode(10);
 
-			int result = linkedList.GetByIndex(1).Value;
+			int result = linkedList.GetByIndex(7).Value;
 
 			linkedList.RemoveNode(0);
 
-			linkedList.RemoveNode(new Node());
+			linkedList.RemoveNode(new Node() { Value = 10 });
 
 			Console.WriteLine(linkedList.GetCount());
 			

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lesson3
 {
-    public class PointStructTwo
+    public struct PointStructTwo
     {
 	    public float X;
 	    public float Y;

@@ -1,57 +1,65 @@
 ﻿using System;
+using System.Reflection;
 using BenchmarkDotNet.Attributes;
 
 namespace Lesson3
 {
 	public class CalculateDistance
 	{
-		private PointClassOne[] _arrayForPointClassOne =
-		{
-			new PointClassOne() { X = 42, Y = 34 },
-			new PointClassOne() { X = 10, Y = 8 },
-			new PointClassOne() { X = 17, Y = 15 },
-			new PointClassOne() { X = 18, Y = 9 }
-		};
+		private readonly Random _random = new Random();
+		private PointClassOne[] _arrayForPointClassOne;
+		private PointClassTwo[] _arrayForPointClassTwo;
+		private PointStructOne[] _arrayForPointStructOne;
+		private PointStructTwo[] _arrayForPointStructTwo;
+		private PointStructOne[] _arrayForPointStructOneD;
+		private PointStructTwo[] _arrayForPointStructTwoD;
 
-		private PointClassTwo[] _arrayForPointClassTwo =
-		{
-			new PointClassTwo() { X = 22, Y = 14 },
-			new PointClassTwo() { X = 6, Y = 4 },
-			new PointClassTwo() { X = 7, Y = 3 },
-			new PointClassTwo() { X = 8, Y = 2 }
-		};
+		protected CalculateDistance() => SetArrays();
 
-		private PointStructOne[] _arrayForPointStructOne =
+		private void SetArrays()
 		{
-			new PointStructOne() { X = 42, Y = 34 },
-			new PointStructOne() { X = 10, Y = 8 },
-			new PointStructOne() { X = 17, Y = 15 },
-			new PointStructOne() { X = 18, Y = 9 }
-		};
+			int size = 100;
+			_arrayForPointClassOne = new PointClassOne[size];
+			_arrayForPointClassTwo = new PointClassTwo[size];
+			_arrayForPointStructOne = new PointStructOne[size];
+			_arrayForPointStructTwo = new PointStructTwo[size];
+			_arrayForPointStructOneD = new PointStructOne[size];
+			_arrayForPointStructTwoD = new PointStructTwo[size];
 
-		private PointStructTwo[] _arrayForPointStructTwo =
-		{
-			new PointStructTwo() { X = 22, Y = 14 },
-			new PointStructTwo() { X = 6, Y = 4 },
-			new PointStructTwo() { X = 7, Y = 3 },
-			new PointStructTwo() { X = 8, Y = 2 }
-		};
-
-		private PointStructOne[] _arrayForPointStructOneD =
-		{
-			new PointStructOne() { pX = 42, pY = 34 },
-			new PointStructOne() { pX = 10, pY = 8 },
-			new PointStructOne() { pX = 17, pY = 15 },
-			new PointStructOne() { pX = 18, pY = 9 }
-		};
-
-		private PointStructTwo[] _arrayForPointStructTwoD =
-		{
-			new PointStructTwo() { pX = 22, pY = 14 },
-			new PointStructTwo() { pX = 6, pY = 4 },
-			new PointStructTwo() { pX = 7, pY = 3 },
-			new PointStructTwo() { pX = 8, pY = 2 }
-		};
+			for (int i = 0; i < _arrayForPointStructOne.Length; i++)
+			{
+				_arrayForPointClassOne[i] = new PointClassOne()
+				{
+					X = _random.Next(0, size),
+					Y = _random.Next(0, size)
+				};
+				_arrayForPointClassTwo[i] = new PointClassTwo()
+				{
+					X = _random.Next(0, size),
+					Y = _random.Next(0, size)
+				};
+				_arrayForPointStructOne[i] = new PointStructOne()
+				{
+					X = _random.Next(0, size),
+					Y = _random.Next(0, size)
+				};
+				_arrayForPointStructTwo[i] = new PointStructTwo()
+				{
+					X = _random.Next(0, size),
+					Y = _random.Next(0, size)
+				};
+				_arrayForPointStructOneD[i] = new PointStructOne()
+				{
+					pX = _random.Next(0, size),
+					pY = _random.Next(0, size)
+				};
+				_arrayForPointStructTwoD[i] = new PointStructTwo()
+				{
+					pX = _random.Next(0, size),
+					pY = _random.Next(0, size)
+				};
+			}
+		}
 
 		private float PointDistance(PointClassOne pointOne, PointClassTwo pointTwo)
 		{

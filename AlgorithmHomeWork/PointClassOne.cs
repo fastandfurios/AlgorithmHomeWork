@@ -8,6 +8,7 @@ namespace Lesson3
 {
     public class PointClassOne
     {
-        
+	    public float X;
+	    public float Y;
     }
 }

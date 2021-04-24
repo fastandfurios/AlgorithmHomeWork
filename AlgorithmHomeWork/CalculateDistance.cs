@@ -30,33 +30,33 @@ namespace Lesson3
 			{
 				_arrayForPointClassOne[i] = new PointClassOne()
 				{
-					X = _random.Next(0, size),
-					Y = _random.Next(0, size)
+					X = (float)_random.NextDouble(),
+					Y = (float)_random.NextDouble()
 				};
 				_arrayForPointClassTwo[i] = new PointClassTwo()
 				{
-					X = _random.Next(0, size),
-					Y = _random.Next(0, size)
+					X = (float)_random.NextDouble(),
+					Y = (float)_random.NextDouble()
 				};
 				_arrayForPointStructOne[i] = new PointStructOne()
 				{
-					X = _random.Next(0, size),
-					Y = _random.Next(0, size)
+					X = (float)_random.NextDouble(),
+					Y = (float)_random.NextDouble()
 				};
 				_arrayForPointStructTwo[i] = new PointStructTwo()
 				{
-					X = _random.Next(0, size),
-					Y = _random.Next(0, size)
+					X = (float)_random.NextDouble(),
+					Y = (float)_random.NextDouble()
 				};
 				_arrayForPointStructOneD[i] = new PointStructOne()
 				{
-					pX = _random.Next(0, size),
-					pY = _random.Next(0, size)
+					pX = _random.NextDouble(),
+					pY = _random.NextDouble()
 				};
 				_arrayForPointStructTwoD[i] = new PointStructTwo()
 				{
-					pX = _random.Next(0, size),
-					pY = _random.Next(0, size)
+					pX = _random.NextDouble(),
+					pY = _random.NextDouble()
 				};
 			}
 		}

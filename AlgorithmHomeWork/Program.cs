@@ -37,6 +37,10 @@ namespace Lesson4
 			binaryTree.RemoveItem(35);
 
 			binaryTree.RemoveItem(5);
+
+			var node = binaryTree.GetNodeByValue(4);
+
+			node = binaryTree.GetNodeByValue(18);
 		}
 	}
 }

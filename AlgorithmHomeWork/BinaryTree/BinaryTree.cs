@@ -67,7 +67,94 @@ namespace Lesson4.BinaryTree
 
 	    public void RemoveItem(int value)
 	    {
-		    throw new NotImplementedException();
+		    if (_root.Value == value)
+			    _root = null;
+
+		    if (_current != null)
+		    {
+			    if (_current.Value > value)
+			    {
+				    if (_current.Value == value)
+				    {
+					    if (_current.LeftChild != null && _current.RightChild == null)
+					    {
+						    _current.Parent.RightChild = _current.LeftChild;
+						    _current.LeftChild.Parent = _current.Parent;
+						}
+						else if (_current.LeftChild == null && _current.RightChild != null)
+					    {
+						    _current.Parent.RightChild = _current.RightChild;
+						    _current.RightChild.Parent = _current.Parent;
+					    }
+					    else if (_current.LeftChild != null && _current.RightChild != null)
+					    {
+							if (_current.RightChild.RightChild != null)
+							{
+								_current.RightChild.LeftChild = _current.LeftChild;
+								_current.LeftChild.Parent = _current.RightChild;
+								_current.Parent.LeftChild = _current.RightChild;
+								_current.RightChild.Parent = _current.Parent;
+							}
+							else
+							{
+								_current.RightChild.Parent = _current.Parent;
+								_current.RightChild.LeftChild = _current.LeftChild;
+								_current.LeftChild.Parent = _current.RightChild;
+								_current.Parent.RightChild = _current.RightChild;
+							}
+						}
+					    else if (_current.LeftChild == null && _current.RightChild == null)
+						    _current.Parent.LeftChild = null;
+					}
+				    else
+				    {
+						_current = _current.LeftChild;
+						RemoveItem(value);
+						_current = _root;
+					}
+			    }
+			    else
+			    {
+				    if (_current.Value == value)
+				    {
+					    if (_current.LeftChild != null && _current.RightChild == null)
+					    {
+						    _current.Parent.RightChild = _current.LeftChild;
+						    _current.LeftChild.Parent = _current.Parent;
+					    }
+						else if (_current.LeftChild == null && _current.RightChild != null)
+					    {
+						    _current.Parent.RightChild = _current.RightChild;
+						    _current.RightChild.Parent = _current.Parent;
+					    }
+					    else if (_current.LeftChild != null && _current.RightChild != null)
+					    {
+						    if (_current.RightChild.RightChild != null)
+						    {
+							    _current.RightChild.LeftChild = _current.LeftChild;
+							    _current.LeftChild.Parent = _current.RightChild;
+							    _current.Parent.LeftChild = _current.RightChild;
+							    _current.RightChild.Parent = _current.Parent;
+							}
+						    else
+						    {
+								_current.RightChild.Parent = _current.Parent;
+								_current.RightChild.LeftChild = _current.LeftChild;
+								_current.LeftChild.Parent = _current.RightChild;
+								_current.Parent.RightChild = _current.RightChild;
+							}
+					    }
+					    else
+						    _current.Parent.RightChild = null;
+					}
+				    else
+				    {
+					    _current = _current.RightChild;
+					    RemoveItem(value);
+					    _current = _root;
+				    }
+				}
+		    }
 	    }
 
 	    public TreeNode GetNodeByValue(int value)

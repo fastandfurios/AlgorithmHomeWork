@@ -104,6 +104,8 @@ namespace Lesson4.BinaryTree
 				    }
 			    }
 			}
+			else
+				throw new NullReferenceException();
 	    }
 
 	    private void Remove()

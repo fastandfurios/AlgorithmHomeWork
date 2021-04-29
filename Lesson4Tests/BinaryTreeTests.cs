@@ -1,3 +1,4 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Lesson4.BinaryTree;
 
@@ -249,6 +250,25 @@ namespace Lesson4Tests
 
 			for (int i = 0; i < arrayExpected.Length; i++)
 				Assert.AreEqual(arrayExpected[i], _binaryTree.GetNodeByValue(arrayExpected[i]).Value);
+		}
+
+		[TestMethod]
+		public void RemoveItem_60_returned_Exception()
+		{
+			_binaryTree.AddItem(33);
+			_binaryTree.AddItem(5);
+			_binaryTree.AddItem(35);
+			_binaryTree.AddItem(1);
+			_binaryTree.AddItem(20);
+			_binaryTree.AddItem(99);
+			_binaryTree.AddItem(4);
+			_binaryTree.AddItem(17);
+			_binaryTree.AddItem(18);
+			_binaryTree.AddItem(19);
+
+			var value = 60;
+
+			Assert.ThrowsException<NullReferenceException>(() => _binaryTree.RemoveItem(value));
 		}
 	}
 }

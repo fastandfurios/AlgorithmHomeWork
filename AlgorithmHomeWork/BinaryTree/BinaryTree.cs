@@ -24,7 +24,7 @@ namespace Lesson4.BinaryTree
 		    {
 			    _root = new TreeNode { Value = value };
 			    _current = _root;
-			}
+		    }
 		    else
 		    {
 			    if (_current.Value > value)
@@ -174,9 +174,6 @@ namespace Lesson4.BinaryTree
 		    return _temp;
 	    }
 
-	    public void PrintTree()
-	    {
-		    throw new NotImplementedException();
-	    }
+	    public void PrintTree() => _root.PrintPretty("", true);
     }
 }

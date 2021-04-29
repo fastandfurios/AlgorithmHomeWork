@@ -24,6 +24,8 @@ namespace Lesson4
 			binaryTree.AddItem(18);
 			binaryTree.AddItem(19);
 
+			binaryTree.PrintTree();
+
 			binaryTree.GetRoot();
 
 			binaryTree.RemoveItem(31);
@@ -41,6 +43,8 @@ namespace Lesson4
 			var node = binaryTree.GetNodeByValue(4);
 
 			node = binaryTree.GetNodeByValue(18);
+
+			binaryTree.PrintTree();
 		}
 	}
 }

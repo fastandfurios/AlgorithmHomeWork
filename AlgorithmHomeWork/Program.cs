@@ -9,7 +9,7 @@ namespace Lesson4
 	{
 		static void Main(string[] args)
 		{
-			//BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
+			BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
 
 			var binaryTree = new BinaryTree.BinaryTree();
 			binaryTree.AddItem(33);

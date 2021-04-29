@@ -12,7 +12,7 @@ namespace Lesson4.BinaryTree
 
 	    public TreeNode GetRoot()
 	    {
-		    if (_root.Parent == null && _root != null)
+		    if (_root != null)
 			    return _root;
 
 		    return null;
@@ -67,40 +67,43 @@ namespace Lesson4.BinaryTree
 
 	    public void RemoveItem(int value)
 	    {
-		    if (_root.Value == value)
-			    _root = null;
-
-		    if (_current != null)
+		    if (this.GetNodeByValue(value) != null)
 		    {
-			    if (_current.Value > value)
+			    if (_root.Value == value)
+				    _root = null;
+
+			    if (_current != null)
 			    {
-				    if (_current.Value == value)
-					    if (_current.RightChild == null && _current.LeftChild == null)
-						    _current.Parent.LeftChild = null;
-					    else
-						    Remove();
-				    else
+				    if (_current.Value > value)
 				    {
-						_current = _current.LeftChild;
-						RemoveItem(value);
-						_current = _root;
-					}
-			    }
-			    else
-			    {
-				    if (_current.Value == value)
-					    if (_current.RightChild == null && _current.LeftChild == null)
-						    _current.Parent.RightChild = null;
+					    if (_current.Value == value)
+						    if (_current.RightChild == null && _current.LeftChild == null)
+							    _current.Parent.LeftChild = null;
+						    else
+							    Remove();
 					    else
-						    Remove();
-				    else
-				    {
-					    _current = _current.RightChild;
-					    RemoveItem(value);
-					    _current = _root;
+					    {
+						    _current = _current.LeftChild;
+						    RemoveItem(value);
+						    _current = _root;
+					    }
 				    }
-				}
-		    }
+				    else
+				    {
+					    if (_current.Value == value)
+						    if (_current.RightChild == null && _current.LeftChild == null)
+							    _current.Parent.RightChild = null;
+						    else
+							    Remove();
+					    else
+					    {
+						    _current = _current.RightChild;
+						    RemoveItem(value);
+						    _current = _root;
+					    }
+				    }
+			    }
+			}
 	    }
 
 	    private void Remove()

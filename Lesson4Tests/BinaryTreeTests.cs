@@ -1,8 +1,8 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Lesson4.BinaryTree;
+using Lesson5.BinaryTree;
 
-namespace Lesson4Tests
+namespace Lesson5Tests
 {
 	[TestClass]
 	public class BinaryTreeTests

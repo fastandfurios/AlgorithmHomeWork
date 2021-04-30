@@ -13,5 +13,7 @@ namespace Lesson5.BinaryTree
 	    void RemoveItem(int value);
 	    TreeNode GetNodeByValue(int value);
 	    void PrintTree();
+	    TreeNode BreadthFirstSearch(int value);
+	    TreeNode DeepFirstSearch(int value);
     }
 }

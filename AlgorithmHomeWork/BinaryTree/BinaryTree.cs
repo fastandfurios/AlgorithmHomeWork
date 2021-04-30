@@ -9,6 +9,8 @@ namespace Lesson5.BinaryTree
     public class BinaryTree : ITree
     {
 	    private TreeNode _root, _current, _temp;
+	    private readonly Queue<TreeNode> _queue = new Queue<TreeNode>();
+	    private readonly Stack<TreeNode> _stack = new Stack<TreeNode>();
 
 	    public TreeNode GetRoot()
 	    {
@@ -180,5 +182,49 @@ namespace Lesson5.BinaryTree
 	    }
 
 	    public void PrintTree() => _root.PrintPretty("", true);
+
+	    public TreeNode BreadthFirstSearch(int value)
+	    {
+			if(_root != null)
+				_queue.Enqueue(_root);
+		    
+		    while (_queue.Count != 0)
+		    {
+			    var currentNode = _queue.Dequeue();
+			    Console.WriteLine(currentNode.Value);
+			    if (value == currentNode.Value)
+				    return currentNode;
+
+			    if (currentNode.LeftChild != null)
+				    _queue.Enqueue(currentNode.LeftChild);
+
+			    if (currentNode.RightChild != null)
+				    _queue.Enqueue(currentNode.RightChild);
+		    }
+
+		    return null;
+	    }
+
+	    public TreeNode DeepFirstSearch(int value)
+	    {
+			if(_root != null)
+				_stack.Push(_root);
+
+		    while (_stack.Count != 0)
+		    {
+			    var currentNode = _stack.Pop();
+			    Console.WriteLine(currentNode.Value);
+			    if (value == currentNode.Value)
+				    return currentNode;
+
+			    if (currentNode.RightChild != null)
+				    _stack.Push(currentNode.RightChild);
+
+				if (currentNode.LeftChild != null)
+				    _stack.Push(currentNode.LeftChild);
+		    }
+
+		    return null;
+	    }
     }
 }

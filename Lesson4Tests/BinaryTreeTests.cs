@@ -8,104 +8,9 @@ namespace Lesson5Tests
 	public class BinaryTreeTests
 	{
 		private readonly BinaryTree _binaryTree = new BinaryTree();
-		private readonly TreeNode _treeNode = new TreeNode();
 
 		[TestMethod]
-		public void GetRoot_returned_null()
-		{
-			var actual = _binaryTree.GetRoot();
-
-			Assert.IsNull(actual);
-		}
-
-		[TestMethod]
-		public void GetRoot_returned_notnull()
-		{
-			_binaryTree.AddItem(33);
-			_binaryTree.AddItem(5);
-			_binaryTree.AddItem(35);
-			_binaryTree.AddItem(1);
-			_binaryTree.AddItem(20);
-			_binaryTree.AddItem(99);
-			_binaryTree.AddItem(4);
-			_binaryTree.AddItem(17);
-			_binaryTree.AddItem(31);
-			_binaryTree.AddItem(18);
-			_binaryTree.AddItem(19);
-
-			var actual = _binaryTree.GetRoot();
-
-			Assert.IsNotNull(actual);
-		}
-
-		[TestMethod]
-		public void GetRoot_returned_33()
-		{
-			_binaryTree.AddItem(33);
-			_binaryTree.AddItem(5);
-			_binaryTree.AddItem(35);
-			_binaryTree.AddItem(1);
-			_binaryTree.AddItem(20);
-			_binaryTree.AddItem(99);
-			_binaryTree.AddItem(4);
-			_binaryTree.AddItem(17);
-			_binaryTree.AddItem(31);
-			_binaryTree.AddItem(18);
-			_binaryTree.AddItem(19);
-
-			var expected = 33;
-
-			var actual = _binaryTree.GetRoot().Value;
-
-			Assert.AreEqual(expected, actual);
-		}
-
-		[TestMethod]
-		public void GetRoot_returned_error()
-		{
-			_binaryTree.AddItem(33);
-			_binaryTree.AddItem(5);
-			_binaryTree.AddItem(35);
-			_binaryTree.AddItem(1);
-			_binaryTree.AddItem(20);
-			_binaryTree.AddItem(99);
-			_binaryTree.AddItem(4);
-			_binaryTree.AddItem(17);
-			_binaryTree.AddItem(31);
-			_binaryTree.AddItem(18);
-			_binaryTree.AddItem(19);
-
-			var expected = 99;
-
-			var actual = _binaryTree.GetRoot().Value;
-
-			Assert.AreEqual(expected, actual);
-		}
-
-		[TestMethod]
-		public void GetNodeByValue_99_returned_99()
-		{
-			_binaryTree.AddItem(33);
-			_binaryTree.AddItem(5);
-			_binaryTree.AddItem(35);
-			_binaryTree.AddItem(1);
-			_binaryTree.AddItem(20);
-			_binaryTree.AddItem(99);
-			_binaryTree.AddItem(4);
-			_binaryTree.AddItem(17);
-			_binaryTree.AddItem(31);
-			_binaryTree.AddItem(18);
-			_binaryTree.AddItem(19);
-
-			var expected = 99;
-
-			var actual = _binaryTree.GetNodeByValue(expected).Value;
-
-			Assert.AreEqual(expected, actual);
-		}
-
-		[TestMethod]
-		public void GetNodeByValue_99_returned_notnull()
+		public void BreadthFirstSearch_99_returned_99()
 		{
 			_binaryTree.AddItem(33);
 			_binaryTree.AddItem(5);
@@ -120,14 +25,23 @@ namespace Lesson5Tests
 			_binaryTree.AddItem(19);
 
 			var value = 99;
+			var expected = 99;
 
-			var actual = _binaryTree.GetNodeByValue(value);
+			var actual = _binaryTree.BreadthFirstSearch(value).Value;
 
-			Assert.IsNotNull(actual);
+			Assert.AreEqual(expected, actual);
 		}
 
 		[TestMethod]
-		public void GetNodeByValue_100_returned_error()
+		public void BreadthFirstSearch_returned_null()
+		{
+			var value = 99;
+
+			Assert.IsNull(_binaryTree.BreadthFirstSearch(value));
+		}
+
+		[TestMethod]
+		public void BreadthFirstSearch_60_returned_null()
 		{
 			_binaryTree.AddItem(33);
 			_binaryTree.AddItem(5);
@@ -138,137 +52,103 @@ namespace Lesson5Tests
 			_binaryTree.AddItem(4);
 			_binaryTree.AddItem(17);
 			_binaryTree.AddItem(31);
-			_binaryTree.AddItem(18);
-			_binaryTree.AddItem(19);
-
-			var value = 100;
-
-			var actual = _binaryTree.GetNodeByValue(value);
-
-			Assert.IsNull(actual);
-		}
-
-		[TestMethod]
-		public void AddItem_33_5_35_1_20_99_4_17_31_18_19_returned_notnull()
-		{
-			_binaryTree.AddItem(33);
-			_binaryTree.AddItem(5);
-			_binaryTree.AddItem(35);
-			_binaryTree.AddItem(1);
-			_binaryTree.AddItem(20);
-			_binaryTree.AddItem(99);
-			_binaryTree.AddItem(4);
-			_binaryTree.AddItem(17);
-			_binaryTree.AddItem(31);
-			_binaryTree.AddItem(18);
-			_binaryTree.AddItem(19);
-
-			Assert.IsNotNull(_binaryTree);
-		}
-
-		[TestMethod]
-		public void AddItem_33_5_35_1_20_99_4_17_31_18_19_returned_33_5_35_1_20_99_4_17_31_18_19()
-		{
-			_binaryTree.AddItem(33);
-			_binaryTree.AddItem(5);
-			_binaryTree.AddItem(35);
-			_binaryTree.AddItem(1);
-			_binaryTree.AddItem(20);
-			_binaryTree.AddItem(99);
-			_binaryTree.AddItem(4);
-			_binaryTree.AddItem(17);
-			_binaryTree.AddItem(31);
-			_binaryTree.AddItem(18);
-			_binaryTree.AddItem(19);
-
-			var arrayExpected = new int[] { 33, 5, 35, 1, 20, 99, 4, 17, 31, 18, 19 };
-
-			for (int i = 0; i < arrayExpected.Length; i++)
-				Assert.AreEqual(arrayExpected[i], _binaryTree.GetNodeByValue(arrayExpected[i]).Value);
-		}
-
-		[TestMethod]
-		public void AddItem_33_5_35_1_20_99_4_17_31_18_19_returned_error()
-		{
-			_binaryTree.AddItem(33);
-			_binaryTree.AddItem(5);
-			_binaryTree.AddItem(35);
-			_binaryTree.AddItem(1);
-			_binaryTree.AddItem(20);
-			_binaryTree.AddItem(99);
-			_binaryTree.AddItem(4);
-			_binaryTree.AddItem(17);
-			_binaryTree.AddItem(31);
-			_binaryTree.AddItem(18);
-			_binaryTree.AddItem(19);
-
-			var arrayExpected = new int[] { 33, 5, 35, 1, 20, 99, 4, 17, 31, 18, 19, 23 };
-
-			for (int i = 0; i < arrayExpected.Length; i++)
-				Assert.AreEqual(arrayExpected[i], _binaryTree.GetNodeByValue(arrayExpected[i]).Value);
-		}
-
-		[TestMethod]
-		public void AddItem_33_5_35_1_20_4_17_31_18_19_returned_error()
-		{
-			_binaryTree.AddItem(33);
-			_binaryTree.AddItem(5);
-			_binaryTree.AddItem(35);
-			_binaryTree.AddItem(1);
-			_binaryTree.AddItem(20);
-			_binaryTree.AddItem(4);
-			_binaryTree.AddItem(17);
-			_binaryTree.AddItem(31);
-			_binaryTree.AddItem(18);
-			_binaryTree.AddItem(19);
-
-			var arrayExpected = new int[] { 33, 5, 35, 1, 20, 99, 4, 17, 31, 18 };
-
-			for (int i = 0; i < arrayExpected.Length; i++)
-				Assert.AreEqual(arrayExpected[i], _binaryTree.GetNodeByValue(arrayExpected[i]).Value);
-		}
-
-		[TestMethod]
-		public void RemoveItem_20_returned_success()
-		{
-			_binaryTree.AddItem(33);
-			_binaryTree.AddItem(5);
-			_binaryTree.AddItem(35);
-			_binaryTree.AddItem(1);
-			_binaryTree.AddItem(20);
-			_binaryTree.AddItem(99);
-			_binaryTree.AddItem(4);
-			_binaryTree.AddItem(17);
-			_binaryTree.AddItem(18);
-			_binaryTree.AddItem(19);
-
-			var value = 20;
-
-			_binaryTree.RemoveItem(value);
-
-			var arrayExpected = new int[] { 33, 5, 35, 1, 17, 99, 4, 18, 19 };
-
-			for (int i = 0; i < arrayExpected.Length; i++)
-				Assert.AreEqual(arrayExpected[i], _binaryTree.GetNodeByValue(arrayExpected[i]).Value);
-		}
-
-		[TestMethod]
-		public void RemoveItem_60_returned_Exception()
-		{
-			_binaryTree.AddItem(33);
-			_binaryTree.AddItem(5);
-			_binaryTree.AddItem(35);
-			_binaryTree.AddItem(1);
-			_binaryTree.AddItem(20);
-			_binaryTree.AddItem(99);
-			_binaryTree.AddItem(4);
-			_binaryTree.AddItem(17);
 			_binaryTree.AddItem(18);
 			_binaryTree.AddItem(19);
 
 			var value = 60;
 
-			Assert.ThrowsException<NullReferenceException>(() => _binaryTree.RemoveItem(value));
+			Assert.IsNull(_binaryTree.BreadthFirstSearch(value));
+		}
+
+		[TestMethod]
+		public void BreadthFirstSearch_33_returned_notnull()
+		{
+			_binaryTree.AddItem(33);
+			_binaryTree.AddItem(5);
+			_binaryTree.AddItem(35);
+			_binaryTree.AddItem(1);
+			_binaryTree.AddItem(20);
+			_binaryTree.AddItem(99);
+			_binaryTree.AddItem(4);
+			_binaryTree.AddItem(17);
+			_binaryTree.AddItem(31);
+			_binaryTree.AddItem(18);
+			_binaryTree.AddItem(19);
+
+			var value = 33;
+
+			Assert.IsNotNull(_binaryTree.BreadthFirstSearch(value));
+		}
+
+		[TestMethod]
+		public void DeepFirstSearch_returned_null()
+		{
+			var value = 19;
+
+			Assert.IsNull(_binaryTree.BreadthFirstSearch(value));
+		}
+
+		[TestMethod]
+		public void DeepFirstSearch_19_returned_19()
+		{
+			_binaryTree.AddItem(33);
+			_binaryTree.AddItem(5);
+			_binaryTree.AddItem(35);
+			_binaryTree.AddItem(1);
+			_binaryTree.AddItem(20);
+			_binaryTree.AddItem(99);
+			_binaryTree.AddItem(4);
+			_binaryTree.AddItem(17);
+			_binaryTree.AddItem(31);
+			_binaryTree.AddItem(18);
+			_binaryTree.AddItem(19);
+
+			var value = 19;
+			var expected = 19;
+
+			var actual = _binaryTree.BreadthFirstSearch(value).Value;
+
+			Assert.AreEqual(expected, actual);
+		}
+
+		[TestMethod]
+		public void DeepFirstSearch_13_returned_null()
+		{
+			_binaryTree.AddItem(33);
+			_binaryTree.AddItem(5);
+			_binaryTree.AddItem(35);
+			_binaryTree.AddItem(1);
+			_binaryTree.AddItem(20);
+			_binaryTree.AddItem(99);
+			_binaryTree.AddItem(4);
+			_binaryTree.AddItem(17);
+			_binaryTree.AddItem(31);
+			_binaryTree.AddItem(18);
+			_binaryTree.AddItem(19);
+
+			var value = 13;
+
+			Assert.IsNull(_binaryTree.BreadthFirstSearch(value));
+		}
+
+		[TestMethod]
+		public void DeepFirstSearch_19_returned_notnull()
+		{
+			_binaryTree.AddItem(33);
+			_binaryTree.AddItem(5);
+			_binaryTree.AddItem(35);
+			_binaryTree.AddItem(1);
+			_binaryTree.AddItem(20);
+			_binaryTree.AddItem(99);
+			_binaryTree.AddItem(4);
+			_binaryTree.AddItem(17);
+			_binaryTree.AddItem(31);
+			_binaryTree.AddItem(18);
+			_binaryTree.AddItem(19);
+
+			var value = 19;
+
+			Assert.IsNotNull(_binaryTree.BreadthFirstSearch(value));
 		}
 	}
 }

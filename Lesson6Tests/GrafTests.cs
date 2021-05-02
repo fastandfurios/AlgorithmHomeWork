@@ -183,7 +183,70 @@ namespace Lesson6Tests
 		}
 
 		[TestMethod]
-		public void DepthFirstSearch_0_78_returned_5()
+		public void DepthFirstSearch_6_0_returned_0()
+		{
+			_graf.AddEdge(0, 1);
+			_graf.AddEdge(0, 2);
+			_graf.AddEdge(0, 7);
+			_graf.AddEdge(1, 4);
+			_graf.AddEdge(2, 3);
+			_graf.AddEdge(2, 4);
+			_graf.AddEdge(3, 5);
+			_graf.AddEdge(3, 6);
+			_graf.AddEdge(6, 7);
+
+			int startNode = 6;
+			int value = 0;
+			int expected = 0;
+
+			int actual = _graf.DepthFirstSearch(startNode, value);
+
+			Assert.AreEqual(expected, actual);
+		}
+
+		[TestMethod]
+		public void DepthFirstSearch_2_7_returned_7()
+		{
+			_graf.AddEdge(0, 1);
+			_graf.AddEdge(0, 2);
+			_graf.AddEdge(0, 7);
+			_graf.AddEdge(1, 4);
+			_graf.AddEdge(2, 3);
+			_graf.AddEdge(2, 4);
+			_graf.AddEdge(3, 5);
+			_graf.AddEdge(3, 6);
+			_graf.AddEdge(6, 7);
+
+			int startNode = 2;
+			int value = 7;
+			int expected = 7;
+
+			int actual = _graf.DepthFirstSearch(startNode, value);
+
+			Assert.AreEqual(expected, actual);
+		}
+
+		[TestMethod]
+		public void DepthFirstSearch_13_7_returned_7()
+		{
+			_graf.AddEdge(0, 1);
+			_graf.AddEdge(0, 2);
+			_graf.AddEdge(0, 7);
+			_graf.AddEdge(1, 4);
+			_graf.AddEdge(2, 3);
+			_graf.AddEdge(2, 4);
+			_graf.AddEdge(3, 5);
+			_graf.AddEdge(3, 6);
+			_graf.AddEdge(6, 7);
+
+			int startNode = 13;
+			int value = 7;
+
+			Assert.ThrowsException<IndexOutOfRangeException>(() => _graf.DepthFirstSearch(startNode, value));
+		}
+
+		[TestMethod]
+		public void DepthFirstSearch_0_46_returned_n1()
 		{
 			_graf.AddEdge(0, 1);
 			_graf.AddEdge(0, 2);
@@ -196,8 +259,8 @@ namespace Lesson6Tests
 			_graf.AddEdge(6, 7);
 
 			int startNode = 0;
-			int value = 78;
-			int expected = 5;
+			int value = 46;
+			int expected = -1;
 
 			int actual = _graf.DepthFirstSearch(startNode, value);
 

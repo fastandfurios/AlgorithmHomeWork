@@ -8,7 +8,7 @@ namespace Lesson6
 {
     public class Graf
     {
-	    private int _vertices, _temp;
+	    private int _vertices, _temp = -1;
 	    private List<int>[] _adjency;
 	    private Queue<int> _queue = new Queue<int>();
 	    private bool[] _visited;
@@ -62,25 +62,29 @@ namespace Lesson6
 
 	    public int DepthFirstSearch(int startVertice, int value)
 	    {
-		    _visited[startVertice] = true;
-		    Console.Write($"{startVertice} ");
-
-		    if (_adjency[startVertice] != null)
+		    if (startVertice <= _visited.Length)
 		    {
-			    foreach (var item in _adjency[startVertice])
-			    {
-				    if (item == value)
-				    {
-					    _temp = item;
-					    return _temp;
-				    }
-					    
+			    _visited[startVertice] = true;
+			    Console.Write($"{startVertice} ");
 
-				    if(!_visited[item] == true)
-						DepthFirstSearch(item, value);
+			    if (_adjency[startVertice] != null)
+			    {
+				    foreach (var item in _adjency[startVertice])
+				    {
+					    if (item == value)
+					    {
+						    _temp = item;
+						    return _temp;
+					    }
+
+					    if (!_visited[item] == true)
+						    DepthFirstSearch(item, value);
+				    }
 			    }
 		    }
-
+		    else
+			    throw new IndexOutOfRangeException();
+		    
 		    return _temp;
 	    }
     }

@@ -81,15 +81,15 @@ namespace Lesson5Tests
 		}
 
 		[TestMethod]
-		public void DeepFirstSearch_returned_null()
+		public void DepthFirstSearch_returned_null()
 		{
 			var value = 19;
 
-			Assert.IsNull(_binaryTree.BreadthFirstSearch(value));
+			Assert.IsNull(_binaryTree.DepthFirstSearch(value));
 		}
 
 		[TestMethod]
-		public void DeepFirstSearch_19_returned_19()
+		public void DepthFirstSearch_19_returned_19()
 		{
 			_binaryTree.AddItem(33);
 			_binaryTree.AddItem(5);
@@ -106,13 +106,13 @@ namespace Lesson5Tests
 			var value = 19;
 			var expected = 19;
 
-			var actual = _binaryTree.BreadthFirstSearch(value).Value;
+			var actual = _binaryTree.DepthFirstSearch(value).Value;
 
 			Assert.AreEqual(expected, actual);
 		}
 
 		[TestMethod]
-		public void DeepFirstSearch_13_returned_null()
+		public void DepthFirstSearch_13_returned_null()
 		{
 			_binaryTree.AddItem(33);
 			_binaryTree.AddItem(5);
@@ -128,11 +128,11 @@ namespace Lesson5Tests
 
 			var value = 13;
 
-			Assert.IsNull(_binaryTree.BreadthFirstSearch(value));
+			Assert.IsNull(_binaryTree.DepthFirstSearch(value));
 		}
 
 		[TestMethod]
-		public void DeepFirstSearch_19_returned_notnull()
+		public void DepthFirstSearch_19_returned_notnull()
 		{
 			_binaryTree.AddItem(33);
 			_binaryTree.AddItem(5);
@@ -148,7 +148,7 @@ namespace Lesson5Tests
 
 			var value = 19;
 
-			Assert.IsNotNull(_binaryTree.BreadthFirstSearch(value));
+			Assert.IsNotNull(_binaryTree.DepthFirstSearch(value));
 		}
 	}
 }

@@ -22,7 +22,7 @@ namespace Lesson5
 
 			var node = binaryTree.BreadthFirstSearch(20);
 
-			node = binaryTree.DeepFirstSearch(99);
+			node = binaryTree.DepthFirstSearch(99);
 		}
 	}
 }

@@ -14,6 +14,6 @@ namespace Lesson5.BinaryTree
 	    TreeNode GetNodeByValue(int value);
 	    void PrintTree();
 	    TreeNode BreadthFirstSearch(int value);
-	    TreeNode DeepFirstSearch(int value);
+	    TreeNode DepthFirstSearch(int value);
     }
 }

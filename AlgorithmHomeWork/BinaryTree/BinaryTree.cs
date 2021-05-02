@@ -205,7 +205,7 @@ namespace Lesson5.BinaryTree
 		    return null;
 	    }
 
-	    public TreeNode DeepFirstSearch(int value)
+	    public TreeNode DepthFirstSearch(int value)
 	    {
 			if(_root != null)
 				_stack.Push(_root);

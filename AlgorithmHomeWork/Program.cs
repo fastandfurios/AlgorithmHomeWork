@@ -18,18 +18,23 @@ namespace Lesson7
 
 		public static void CalculateRoutes(int[,] field)
 		{
-			for (int i = 0; i < field.GetLength(0); i++)
+			if (field != null)
 			{
-				for (int j = 0; j < field.GetLength(1); j++)
+				for (int i = 0; i < field.GetLength(0); i++)
 				{
-					if (i == 0 || j == 0)
-						field[i, j] = 1;
-					else if (field[i, j] == -1)
-						field[i, j] = 0;
-					else
-						field[i, j] = field[i, j - 1] + field[i - 1, j];
+					for (int j = 0; j < field.GetLength(1); j++)
+					{
+						if (i == 0 || j == 0)
+							field[i, j] = 1;
+						else if (field[i, j] == -1)
+							field[i, j] = 0;
+						else
+							field[i, j] = field[i, j - 1] + field[i - 1, j];
+					}
 				}
 			}
+			else
+				throw new NullReferenceException();
 		}
 
 		static void Print(int row, int column, int[,] field)

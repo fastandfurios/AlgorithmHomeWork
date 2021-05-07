@@ -6,7 +6,8 @@ namespace Lesson8
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			var bucketSort = new BucketSortClass();
+			bucketSort.Run();
 		}
 	}
 }

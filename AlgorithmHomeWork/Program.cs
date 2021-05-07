@@ -6,7 +6,7 @@ namespace Lesson7
 	{
 		static void Main(string[] args)
 		{
-			int[,] field = new int[5, 5];
+			int[,] field = new int[10, 10];
 			field[1, 1] = -1;
 			field[3, 1] = -1;
 			field[2, 3] = -1;
@@ -42,7 +42,7 @@ namespace Lesson7
 			for (int i = 0; i < row; i++)
 			{
 				for (int j = 0; j < column; j++)
-					Console.Write(field[i, j]);
+					Console.Write($"{field[i, j]} ");
 				
 				Console.Write("\r\n");
 			}

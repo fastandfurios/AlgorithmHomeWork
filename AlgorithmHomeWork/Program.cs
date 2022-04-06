@@ -1,14 +1,11 @@
 ﻿using System;
-using Lesson4.TestsPerformanceHashSetAndArray;
-using BenchmarkDotNet.Running;
 
-namespace Lesson4
+namespace Lesson5
 {
 	public class Program
 	{
 		static void Main(string[] args)
 		{
-			BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
 
 			var binaryTree = new BinaryTree.BinaryTree();
 			binaryTree.AddItem(33);
@@ -23,27 +20,9 @@ namespace Lesson4
 			binaryTree.AddItem(18);
 			binaryTree.AddItem(19);
 
-			binaryTree.PrintTree();
+			var node = binaryTree.BreadthFirstSearch(20);
 
-			binaryTree.GetRoot();
-
-			binaryTree.RemoveItem(31);
-
-			binaryTree.RemoveItem(20);
-
-			binaryTree.RemoveItem(17);
-
-			binaryTree.AddItem(34);
-
-			binaryTree.RemoveItem(35);
-
-			binaryTree.RemoveItem(5);
-
-			var node = binaryTree.GetNodeByValue(4);
-
-			node = binaryTree.GetNodeByValue(18);
-
-			binaryTree.PrintTree();
+			node = binaryTree.DepthFirstSearch(99);
 		}
 	}
 }

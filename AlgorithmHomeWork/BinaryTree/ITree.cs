@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lesson4.BinaryTree
+namespace Lesson5.BinaryTree
 {
     public interface ITree
     {
@@ -13,5 +13,7 @@ namespace Lesson4.BinaryTree
 	    void RemoveItem(int value);
 	    TreeNode GetNodeByValue(int value);
 	    void PrintTree();
+	    TreeNode BreadthFirstSearch(int value);
+	    TreeNode DepthFirstSearch(int value);
     }
 }

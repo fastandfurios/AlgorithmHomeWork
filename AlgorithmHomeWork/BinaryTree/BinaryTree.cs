@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lesson4.BinaryTree
+namespace Lesson5.BinaryTree
 {
     public class BinaryTree : ITree
     {
@@ -180,5 +180,53 @@ namespace Lesson4.BinaryTree
 	    }
 
 	    public void PrintTree() => _root.PrintPretty("", true);
+
+	    public TreeNode BreadthFirstSearch(int value)
+	    {
+		    var queue = new Queue<TreeNode>();
+
+			if(_root != null)
+				queue.Enqueue(_root);
+		    
+		    while (queue.Count != 0)
+		    {
+			    var currentNode = queue.Dequeue();
+			    Console.WriteLine(currentNode.Value);
+			    if (value == currentNode.Value)
+				    return currentNode;
+
+			    if (currentNode.LeftChild != null)
+				    queue.Enqueue(currentNode.LeftChild);
+
+			    if (currentNode.RightChild != null)
+				    queue.Enqueue(currentNode.RightChild);
+		    }
+
+		    return null;
+	    }
+
+	    public TreeNode DepthFirstSearch(int value)
+	    {
+		    var stack = new Stack<TreeNode>();
+
+			if(_root != null)
+				stack.Push(_root);
+
+		    while (stack.Count != 0)
+		    {
+			    var currentNode = stack.Pop();
+			    Console.WriteLine(currentNode.Value);
+			    if (value == currentNode.Value)
+				    return currentNode;
+
+			    if (currentNode.RightChild != null)
+				    stack.Push(currentNode.RightChild);
+
+				if (currentNode.LeftChild != null)
+				    stack.Push(currentNode.LeftChild);
+		    }
+
+		    return null;
+	    }
     }
 }

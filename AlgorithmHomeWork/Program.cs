@@ -4,7 +4,7 @@ using Lesson2.DirWithTask2;
 
 namespace Lesson2
 {
-	class Program
+	public class Program
 	{
 		static void Main(string[] args)
 		{

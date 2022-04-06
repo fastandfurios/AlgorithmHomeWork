@@ -2,10 +2,9 @@
 using Lesson4.TestsPerformanceHashSetAndArray;
 using BenchmarkDotNet.Running;
 
-
 namespace Lesson4
 {
-	class Program
+	public class Program
 	{
 		static void Main(string[] args)
 		{

@@ -1,51 +1,21 @@
 ﻿using System;
+using Lesson1.DirWithTask1;
+using Lesson1.DirWithTask3;
 
-namespace Lesson7
+namespace Lesson1
 {
 	public class Program
 	{
 		static void Main(string[] args)
 		{
-			int[,] field = new int[10, 10];
-			field[1, 1] = -1;
-			field[3, 1] = -1;
-			field[2, 3] = -1;
+			//Задача 1
+			var task1 = new Task1();
+			Console.WriteLine(task1.CheckNumber(10));
 
-			CalculateRoutes(field);
-
-			Print(field.GetLength(0), field.GetLength(1), field);
-		}
-
-		public static void CalculateRoutes(int[,] field)
-		{
-			if (field != null)
-			{
-				for (int i = 0; i < field.GetLength(0); i++)
-				{
-					for (int j = 0; j < field.GetLength(1); j++)
-					{
-						if (i == 0 || j == 0)
-							field[i, j] = 1;
-						else if (field[i, j] == -1)
-							field[i, j] = 0;
-						else
-							field[i, j] = field[i, j - 1] + field[i - 1, j];
-					}
-				}
-			}
-			else
-				throw new NullReferenceException();
-		}
-
-		static void Print(int row, int column, int[,] field)
-		{
-			for (int i = 0; i < row; i++)
-			{
-				for (int j = 0; j < column; j++)
-					Console.Write($"{field[i, j]} ");
-				
-				Console.Write("\r\n");
-			}
+			//Задача 3
+			var task3 = new NumbersFibonacci();
+			Console.WriteLine(task3.CalculateNumberFibonacciRecursion(5, 0));
+			Console.WriteLine(task3.CalculateNumberFibonacciLoop(10));
 		}
 	}
 }

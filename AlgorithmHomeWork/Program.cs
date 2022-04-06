@@ -1,28 +1,27 @@
 ﻿using System;
 
-namespace Lesson5
+namespace Lesson6
 {
 	public class Program
 	{
 		static void Main(string[] args)
 		{
+			var graf = new Graf(8);
+			graf.AddEdge(0, 1);
+			graf.AddEdge(0, 2);
+			graf.AddEdge(0, 7);
+			graf.AddEdge(1, 4);
+			graf.AddEdge(2, 3);
+			graf.AddEdge(2, 4);
+			graf.AddEdge(3, 5);
+			graf.AddEdge(3, 6);
+			graf.AddEdge(6, 7);
 
-			var binaryTree = new BinaryTree.BinaryTree();
-			binaryTree.AddItem(33);
-			binaryTree.AddItem(5);
-			binaryTree.AddItem(35);
-			binaryTree.AddItem(1);
-			binaryTree.AddItem(20);
-			binaryTree.AddItem(99);
-			binaryTree.AddItem(4);
-			binaryTree.AddItem(17);
-			binaryTree.AddItem(31);
-			binaryTree.AddItem(18);
-			binaryTree.AddItem(19);
-
-			var node = binaryTree.BreadthFirstSearch(20);
-
-			node = binaryTree.DepthFirstSearch(99);
+			Console.WriteLine("BFS: ");
+			var result = graf.BreadthFirstSearch(0, 5);
+			Console.WriteLine();
+			Console.WriteLine("DFS:");
+			result = graf.DepthFirstSearch(0, 5);
 		}
 	}
 }
